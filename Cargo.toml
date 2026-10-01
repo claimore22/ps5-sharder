@@ -1,0 +1,36 @@
+[package]
+name = "ps5-shader"
+version = "0.1.0"
+edition = "2024"
+description = "BlePS5 PSSL-to-Vulkan shader compiler (PS5 shader research)"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+logos = "0.16"
+thiserror = "2"
+indexmap = "2"
+smallvec = "1"
+rayon = "1.10"
+indicatif = "0.18.6"
+
+# HLSL -> SPIR-V via DXC (DirectXShaderCompiler)
+hassle-rs = "0.12"
+
+# SPIR-V validation (the authoritative validator)
+spirv-tools = "0.13"
+
+# SPIR-V inspection / debugging (NOT used for validation)
+rspirv = "0.13"
+
+# Vulkan bindings for a later pipeline-validation harness (deferred)
+ash = "0.38"
+
+# Structured, filterable tracing across the compile pipeline
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+
+[[bin]]
+name = "ps5-shader"
+path = "src/main.rs"

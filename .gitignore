@@ -1,0 +1,54 @@
+# === Rust build output ===
+/target/
+
+# NOTE: /dxc (DXC toolchain binaries used by validation) is intentionally
+# TRACKED so a fresh clone can build and validate without extra downloads.
+# Do not add an ignore rule for it.
+
+# === Generated / regenerable outputs (never committed) ===
+# PSFX virtual-header debug cache
+# See src/psfx/cache.rs – key = toolchain identity + transitive DAG hash + rules version
+/cache/
+# Compiler and validation outputs
+*.spv
+shader.generated.hlsl
+shader.fail.hlsl
+shader.fail.log
+pre_dump.pssl
+expanded.pssl
+
+# === Shader corpus and per-shader artifacts ===
+# Validation data only – not needed to build the crate.
+tests/shaders/
+*.ags
+*.ags.o
+*.agsd
+*.ags_dump.txt
+ORIGIN.txt
+
+# === Helper scripts, notes, and local reports (not part of the build) ===
+*.py
+__pycache__/
+*.md
+!README.md
+*.txt
+*.csv
+# Reference dumps and helper script trees (not part of the build)
+/other_references/
+/parser_py_script/
+# Local tool config (carries absolute machine paths)
+/opencode.json
+# Local git history backup (never commit this)
+.git.bak*/
+.watchdog_state.json
+watchdog_*
+hermes_*
+freepool-*
+
+# === Editors / OS ===
+.vscode/
+.idea/
+*.orig
+*~
+.DS_Store
+Thumbs.db
